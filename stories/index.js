@@ -6,7 +6,6 @@ import {
   Sparkline,
   LineSeries,
   HorizontalReferenceLine,
-  LinearGradient,
   BandLine,
   PatternLines,
   PointSeries } from '@data-ui/sparkline';
@@ -61,7 +60,7 @@ storiesOf('Button', module)
         fill={allColors.grape[3]}
         size={5}
         stroke="#fff"
-        renderLabel={(val, i) => val.toFixed(2)}
+        renderLabel={val => val.toFixed(2)}
       />
     </Sparkline>
   ));
