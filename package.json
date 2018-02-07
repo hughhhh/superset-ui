@@ -1,0 +1,22 @@
+{
+  "name": "superset-ui",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@data-ui/sparkline": "^0.0.50",
+    "@data-ui/theme": "^0.0.48",
+    "eslint": "^4.17.0",
+    "global": "^4.3.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.1.0"
+  },
+  "scripts": {
+    "storybook": "start-storybook -p 9001 -c .storybook"
+  },
+  "devDependencies": {
+    "@storybook/react": "^3.3.12",
+    "babel-core": "^6.26.0",
+    "eslint-config-airbnb": "^16.1.0"
+  }
+}
