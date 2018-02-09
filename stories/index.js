@@ -1,10 +1,11 @@
+/* eslint-disable */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import fetch from 'node-fetch';
 
 import LineSeriesExamples from '../components/LineSeriesExamples'
-import LineGraph from '../components/LineGraph'
+import SupersetChart from '../components/SupersetChart'
 
 import {
   Sparkline,
@@ -20,7 +21,12 @@ const data = Array(25).fill().map(Math.random);
 
 storiesOf('Button', module)
   .add('Superset Graph', () => (
-    <LineGraph/>
+    <SupersetChart
+      baseUrl = "https://my.superset.instance.net"
+      formData = {{}} // json
+      dataSourceType = {{}} // string
+      tableId = {101} // int
+    />
   ))
   .add('Data UI Mock Line Series', () => (
     <LineSeriesExamples/>
