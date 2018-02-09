@@ -1,6 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+import fetch from 'node-fetch';
+
+import LineSeriesExamples from '../components/LineSeriesExamples'
+import LineGraph from '../components/LineGraph'
 
 import {
   Sparkline,
@@ -15,8 +19,11 @@ import { allColors } from '@data-ui/theme'; // open-color colors
 const data = Array(25).fill().map(Math.random);
 
 storiesOf('Button', module)
-  .add('Hello World', () => (
-    <div>Hello</div>
+  .add('Superset Graph', () => (
+    <LineGraph/>
+  ))
+  .add('Data UI Mock Line Series', () => (
+    <LineSeriesExamples/>
   ))
   .add('Test Sparkline', () => (
     <Sparkline
