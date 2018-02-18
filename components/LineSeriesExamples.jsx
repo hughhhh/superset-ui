@@ -1,7 +1,7 @@
 import React from 'react';
-import { allColors } from '@data-ui/theme/build/color';
+import { allColors, getPaletteForBrightness } from '@data-ui/theme/build/color';
 import { Button } from '@data-ui/forms';
-
+import { getRandomNumber, getRandomColor } from './utils';
 import {
   CrossHair,
   LineSeries,
@@ -18,47 +18,14 @@ import WithToggle from './WithToggle';
 const formattedData = mockResponse.data.map(d => ({
   data: d.values,
   key: d.key[0],
-  stroke: allColors.grape[9],
+  // stroke: getPaletteForBrightness()[getRandomNumber(10)],
+  stroke: getRandomColor(),
   showPoints: false,
   dashType: 'solid',
   seriesKey: d.key[0],
 }));
 
 const seriesProps = formattedData;
-// const seriesProps = [
-//   {
-//     seriesKey: 'Stock 1',
-//     key: 'Stock 1',
-//     data: myData,
-//     stroke: allColors.grape[9],
-//     showPoints: false,
-//     dashType: 'dashed',
-//   },
-//   {
-//     seriesKey: 'Stock 2',
-//     key: 'Stock 2',
-//     data: timeSeriesData.map(d => ({
-//       ...d,
-//       y: Math.random() > 0.5 ? d.y * 2 : d.y / 2,
-//     })),
-//     stroke: allColors.grape[7],
-//     strokeDasharray: '6 4',
-//     dashType: 'dashed',
-//     strokeLinecap: 'butt',
-//   },
-//   {
-//     seriesKey: 'Stock 3',
-//     key: 'Stock 3',
-//     data: timeSeriesData.map(d => ({
-//       ...d,
-//       y: Math.random() < 0.3 ? d.y * 3 : d.y / 3,
-//     })),
-//     stroke: allColors.grape[4],
-//     strokeDasharray: '2 2',
-//     dashType: 'dotted',
-//     strokeLinecap: 'butt',
-//   },
-// ];
 
 const MARGIN = { left: 8, top: 16 };
 const TOOLTIP_TIMEOUT = 250;
@@ -252,7 +219,6 @@ class LineSeriesExample extends React.PureComponent {
                   {seriesProps.map(props => (
                     <LineSeries {...props} disableMouseEvents={disableMouseEvents} />
                   ))}
-                    <LineSeries {...seriesProps[0]} disableMouseEvents={disableMouseEvents} />
                   <CrossHair
                     fullHeight
                     showHorizontalLine={false}

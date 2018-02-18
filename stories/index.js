@@ -6,6 +6,7 @@ import fetch from 'node-fetch';
 
 import LineSeriesExamples from '../components/LineSeriesExamples'
 import SupersetChart from '../components/SupersetChart'
+import LineChart from '../components/LineChart'
 
 import {
   Sparkline,
@@ -20,6 +21,14 @@ import { allColors } from '@data-ui/theme'; // open-color colors
 const data = Array(25).fill().map(Math.random);
 
 storiesOf('Button', module)
+  .add('Superset LineChart', () => (
+    <LineChart
+      baseUrl = "https://my.superset.instance.net"
+      formData = {{}} // json
+      dataSourceType = {{}} // string
+      tableId = {101} // int
+    />
+  ))
   .add('Superset Graph', () => (
     <SupersetChart
       baseUrl = "https://my.superset.instance.net"

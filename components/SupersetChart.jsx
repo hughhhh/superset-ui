@@ -5,12 +5,15 @@ import { LineSeries, XAxis, YAxis } from '@data-ui/xy-chart';
 import { allColors } from '@data-ui/theme/build/color';
 import XYChart, { formatYear } from './ResponsiveXYChart';
 import mockResponse from './MockSupersetResponse';
+import { getRandomNumber, getRandomColor } from './utils';
+import '@ui-kit/css';
+import { Panel } from 'react-bootstrap';
 
 
 const formattedData = mockResponse.data.map(d => ({
   data: d.values,
   key: d.key[0],
-  stroke: allColors.blue[9],
+  stroke: getRandomColor(),
   showPoints: false,
   dashType: 'solid',
   seriesKey: d.key[0],
@@ -22,7 +25,7 @@ export default class SupersetChart extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      data: {},
+      data: [],
       form_data: {},
       cache_key: '',
       query: null,
@@ -37,6 +40,9 @@ export default class SupersetChart extends React.PureComponent {
   }
 
   componentDidMount() {
+    // This is an placeholder for example calls through SupersetsAPI
+    // Still a WIP
+    /*
     let axiosConfig = {
       headers: {
           'Content-Type': 'application/json;charset=UTF-8',
@@ -54,23 +60,20 @@ export default class SupersetChart extends React.PureComponent {
           dashType: 'solid',
           seriesKey: d.key[0],
         }));
-        this.setState({ propData });
-      });
+        this.setState({ formattedData });
+      }); */
+      console.log('mounting...')
+      this.setState({ data: formattedData });
   }
 
   render() {
-    console.log(this.state)
     return (
-      <div>
-        <XYChart
-          xScale={{ type: 'time' }}
-          yScale={{ type: 'linear' }}>
-          <XAxis label="Time" numTicks={5} />
-          <YAxis label="Stock price ($)" numTicks={4} />
-          <LineSeries {...formattedData[0]} />
-          {this.state.propData && <LineSeries {...this.state.propData[1]} />}
-        </XYChart>
-      </div>
+      <div style={{backgroundColor: 'white'}}>
+      <Panel bsStyle="warning">
+        <Panel.Heading>Error!</Panel.Heading>
+        <Panel.Body>The render() function is not implemented.</Panel.Body>
+      </Panel>
+    </div>
     );
   }
 }
